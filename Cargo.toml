@@ -1,0 +1,14 @@
+[package]
+name = "rust-password-generator"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+clap = { version = "4.5.1", features = ["derive"] }
+human-panic = "1.2.3"
+rand = "0.8.5"
+serde = "1.0.197"
+tabled = "0.15.0"
+zxcvbn = "2.2.2"
