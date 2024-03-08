@@ -35,6 +35,7 @@ Commands:
 
 Options:
       --analyze
+      --copy
       --seed <SEED>
   -h, --help         Print help
   -V, --version      Print version
