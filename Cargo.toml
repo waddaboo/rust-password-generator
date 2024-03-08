@@ -6,6 +6,7 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+arboard = "3.3.2"
 clap = { version = "4.5.1", features = ["derive"] }
 human-panic = "1.2.3"
 rand = "0.8.5"

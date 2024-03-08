@@ -2,6 +2,7 @@ mod generate_password;
 mod password_analyzer;
 mod util;
 
+use arboard::Clipboard;
 use clap::{Parser, Subcommand};
 use generate_password::{generate_password, generate_pin_number};
 use human_panic::setup_panic;
@@ -19,6 +20,9 @@ struct Cli {
 
     #[arg(long)]
     analyze: bool,
+
+    #[arg(long)]
+    copy: bool,
 
     #[arg(long)]
     seed: Option<u64>,
@@ -72,6 +76,13 @@ fn main() {
 
         Commands::Pin { length } => generate_pin_number(&mut rng, length),
     };
+
+    if cli.copy {
+        let mut clipboard = Clipboard::new().unwrap();
+        clipboard
+            .set_text(&password)
+            .expect("Unable to access clipboard");
+    }
 
     if cli.analyze {
         let analyzer = PasswordAnalysis::new(&password);
