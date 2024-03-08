@@ -207,3 +207,46 @@ impl Display for PasswordStrength {
         write!(f, "{}", strength)
     }
 }
+
+#[cfg(test)]
+mod tests {
+    use super::{PasswordAnalysis, PasswordStrength};
+
+    #[test]
+    fn password_strength_test() {
+        let veryweak_password = "zxcvbn";
+        let veryweak_analyzer = PasswordAnalysis::new(&veryweak_password);
+        assert_eq!(
+            PasswordStrength::from(veryweak_analyzer.entropy.score()).to_string(),
+            "very weak"
+        );
+
+        let weak_password = "!zxcvbn";
+        let weak_analyzer = PasswordAnalysis::new(&weak_password);
+        assert_eq!(
+            PasswordStrength::from(weak_analyzer.entropy.score()).to_string(),
+            "weak"
+        );
+
+        let good_password = "Tr0ub4dour&3";
+        let good_analyzer = PasswordAnalysis::new(&good_password);
+        assert_eq!(
+            PasswordStrength::from(good_analyzer.entropy.score()).to_string(),
+            "good"
+        );
+
+        let strong_password = "BTYAFpgVxN";
+        let strong_analyzer = PasswordAnalysis::new(&strong_password);
+        assert_eq!(
+            PasswordStrength::from(strong_analyzer.entropy.score()).to_string(),
+            "strong"
+        );
+
+        let verystrong_password = "s`4V~74HzxOA";
+        let verystrong_analyzer = PasswordAnalysis::new(&verystrong_password);
+        assert_eq!(
+            PasswordStrength::from(verystrong_analyzer.entropy.score()).to_string(),
+            "very strong"
+        );
+    }
+}
