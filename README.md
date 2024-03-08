@@ -65,6 +65,10 @@ JyXAmuqSKiyf
 $ cargo run -- normal -n -s -l 20
 q39rCtO{2gYm13w]4Sxl
 
+# Generate password and copy generated password to clipboard
+$ cargo run -- --copy normal
+NxJEHlRQPSob
+
 # Generate password and analyze
 $ cargo run --analyze normal -n -s -l 20
 ┌──────────────────────┐
@@ -113,6 +117,10 @@ $ cargo run -- pin
 # Generate PIN number with options
 $ cargo run -- pin -l 12
 088573096367
+
+# Generate PIN number and copy generated PIN number to clipboard
+$ cargo run -- --copy pin
+0031
 
 # Generate PIN number and analyze
 $ cargo run -- --analyze pin -l 12
